@@ -20,14 +20,38 @@ To set up the project locally, follow these steps:
 
 2. **Installing Dependencies:**
    
-   -Make sure you have Node.js installed.
+- Make sure you have Node.js installed.
    ```bash
    npm i
 
 4. **Run Project:**
    
-  -To compile TypeScript files
+- To compile TypeScript files
    ```bash
     npm run build
+
+- To execute the tests and ensure everything is working correctly
+   ```bash
+   npm run test
+
+## Usage
+- Book Class: Handles the creation and validation of book objects.
+- User Class: Manages user data and the borrowing/returning of books.
+- Library Class: Oversees the collection of books and users, providing methods for adding books and users, as well as borrowing and returning books.
+
+## Tests
+  - The project follows TDD principles, and all core functionalities are thoroughly tested. Test cases include:
+  
+      - Adding and validating books and users.
+      
+      - Borrowing and returning books.
+      
+      - Handling invalid data and duplicate entries.
+      
+      - Checking available books and borrowed books for each user.
+
+  ## Author
+
+[Yash Patel](https://github.com/ypatel11)
 
   
