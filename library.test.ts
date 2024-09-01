@@ -22,6 +22,17 @@ describe('Library System', () => {
         library.addBook(book2);
     });
 
+    it('should not allow adding duplicate users', () => {
+        expect(() => library.addUser(new User('User 1 Duplicate', 'user1@example.com'))).toThrow('User already exists.');
+        expect(library.addUser.length).toBe(2); // Should only have the original 2 users
+    });
+    
+    it('should not allow adding duplicate books', () => {
+        expect(() => library.addBook(new Book('Duplicate Book', 'Author 1', 'ISBN123', 2023, 3))).toThrow('Book already exists.');
+        expect(library.getAvailableBooks().length).toBe(2); // Should only have the original 2 books
+    });
+    
+
     it('should add users and books correctly', () => {
         expect(library.getAvailableBooks().length).toBe(2);
         expect(library.getUserBorrowedBooks(user1.email).length).toBe(0);
@@ -50,12 +61,17 @@ describe('Library System', () => {
         expect(() => library.borrowBook('ISBN123', 'invalidUser@example.com')).toThrow('User not found.');
         expect(() => library.returnBook('ISBN123', 'invalidUser@example.com')).toThrow('User not found.');
         
-        library.borrowBook('ISBN23', user1.email);
+        library.borrowBook('ISBN123', user1.email);
         expect(() => library.borrowBook('ISBN123', user1.email)).toThrow('Book already borrowed by this user.');
         
         library.borrowBook('ISBN456', user1.email);
         expect(() => library.borrowBook('ISBN456', user2.email)).toThrow('Book is not available for borrowing.');
     });
+
+    it('should not allow adding a book with a negative quantity', () => {
+        expect(() => library.addBook(new Book('Invalid Book', 'Author', 'ISBN789', 2025, -1))).toThrow('Invalid book data: Quantity must be a non-negative number.');
+    });
+    
 
     it('should return correct available books', () => {
         expect(library.getAvailableBooks().length).toBe(2);
@@ -76,4 +92,5 @@ describe('Library System', () => {
         expect(borrowedBooks[0].isbn).toBe('ISBN123');
         expect(borrowedBooks[1].isbn).toBe('ISBN456');
     });
+    
 });
