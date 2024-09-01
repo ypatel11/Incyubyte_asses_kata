@@ -50,7 +50,7 @@ To set up the project locally, follow these steps:
       
       - Checking available books and borrowed books for each user.
 
-  ## Author
+## Author
 
 [Yash Patel](https://github.com/ypatel11)
 
