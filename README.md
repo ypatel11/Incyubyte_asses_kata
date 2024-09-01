@@ -19,16 +19,15 @@ To set up the project locally, follow these steps:
   - typescript: 5.5.4
 
 2. **Installing Dependencies:**
+   
    -Make sure you have Node.js installed.
    ```bash
    npm i
 
-3. **Run Project:**
-  -Use command for building project
+4. **Run Project:**
+   
+  -To compile TypeScript files
    ```bash
-   npm run build
+    npm run build
 
-  -To execute the tests and ensure everything is working correctly:
-   ```bash
-   npm run test
-
+  
